@@ -4,14 +4,12 @@ import { Button } from '@/components/ui/button';
 import { MessageSquare, Copy, Phone } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
-import { Translations } from '@/constants/translations';
-
 interface SupplierMessageProps {
-  translations: Translations;
+  isHindi: boolean;
   onClose: () => void;
 }
 
-const SupplierMessage: React.FC<SupplierMessageProps> = ({ translations, onClose }) => {
+const SupplierMessage: React.FC<SupplierMessageProps> = ({ isHindi, onClose }) => {
   const { toast } = useToast();
 
   const messageText = isHindi 
