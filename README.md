@@ -1,73 +1,67 @@
-# Welcome to your Lovable project
+ChaatAI – Voice-First Group Buying Platform for Street Vendors
+Welcome to ChaatAI, a voice-driven AI platform designed to empower India’s illiterate and semi-literate street food vendors by enabling them to pool raw material orders and access wholesale prices — using just their voice.
 
-## Project info
+🌐 Live Demo Website: https://voice-group-saathi.lovable.app
 
-**URL**: https://lovable.dev/projects/b513bf71-42ed-4cca-965c-1e253bfc5666
+🧐 Problem We Are Solving
+In India, 30% of street food vendors are illiterate or semi-literate, and they struggle with:
 
-## How can I edit this code?
+Paying higher prices for raw materials due to low individual buying power.
 
-There are several ways of editing your application.
+Inability to negotiate bulk discounts like restaurants.
 
-**Use Lovable**
+Difficulty in using complex apps (most solutions are text-heavy).
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/b513bf71-42ed-4cca-965c-1e253bfc5666) and start prompting.
+Lack of a trusted, simple system to collaborate with nearby vendors.
 
-Changes made via Lovable will be committed automatically to this repo.
+🎯 Our Solution — ChaatAI
+ChaatAI is a Voice-First Group Buying Platform that allows vendors to:
 
-**Use your preferred IDE**
+Speak their raw material needs (in Hindi or regional dialects).
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+Automatically join group orders with nearby vendors.
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+Negotiate bulk discounts collectively with suppliers.
 
-Follow these steps:
+All this — without typing, reading, or downloading complex apps.
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+✨ Key Features
+Feature	Description
+🎤 Voice Order Input	Vendors press a mic button to record their orders (e.g., "5kg tamatar chahiye").
+📝 AI Transcription & Grouping	AI converts voice notes to text, groups similar orders, and matches vendors by location.
+🗺️ Nearby Group Orders View	Vendors can see active group orders in their area via a simple map interface.
+🔔 Order Progress Tracker	Live updates on how many vendors have joined (e.g., "7/10 vendors joined, order going live").
+📩 Supplier Bulk SMS Broadcast	Once threshold met, the system auto-generates bulk order SMS to suppliers.
+🌐 Multilingual Support	Hindi/English toggle (expandable to regional languages).
+🤝 Trust-Driven, Inclusive Design	Zero typing, zero reading — inclusive UX for illiterate and semi-literate users.
+📞 Call Support Button	For manual assistance, vendors can directly call the support team.
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+💡 Tech Stack & Architecture
+Layer	Technologies
+Frontend	HTML, CSS, JavaScript (Built using Lovable.so’s AI site builder)
+Voice AI	OpenAI Whisper API (Speech-to-Text)
+LLM Layer	GPT-4 for dialect translation & order clustering
+Communication	Twilio API (Bulk SMS Broadcasts to Suppliers)
+Location Mapping	Mapbox API (Nearby Vendor Grouping & Visuals)
+Backend (MVP Simulation)	Firebase (Live Order Data Simulation for Demo)
 
-# Step 3: Install the necessary dependencies.
-npm i
+🚀 How It Works — User Flow
+Vendor visits the web app on their phone (no app download needed).
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+They press the mic button and record a voice note: “5kg aloo chahiye, koi saath milega?”
 
-**Edit a file directly in GitHub**
+AI transcribes & matches the order with other vendors in the same locality.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+Vendors see a Group Order Card (e.g., “4/10 joined. Save ₹7/kg if you join.”)
 
-**Use GitHub Codespaces**
+When threshold is met, ChaatAI auto-generates a bulk SMS to trusted suppliers.
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+Vendors receive confirmation of their discounted bulk purchase.
 
-## What technologies are used for this project?
+🧑‍🍳 Who is This For?
+Street Food Vendors (Thela-walas, small stalls)
 
-This project is built with:
+Semi-literate or illiterate vendors who find apps intimidating.
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+Vendors in urban and semi-urban India who suffer due to lack of bulk buying power.
 
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/b513bf71-42ed-4cca-965c-1e253bfc5666) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
