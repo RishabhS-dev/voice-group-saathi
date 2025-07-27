@@ -9,9 +9,10 @@ import SupplierMessage from '@/components/SupplierMessage';
 import HowItWorks from '@/components/HowItWorks';
 import LanguageToggle from '@/components/LanguageToggle';
 import AIAssistant from '@/components/AIAssistant';
+import { useLanguage } from '@/hooks/useLanguage';
 
 const Index = () => {
-  const [isHindi, setIsHindi] = useState(true);
+  const { currentLanguage, translations, changeLanguage } = useLanguage('hi');
   const [currentOrder, setCurrentOrder] = useState<string>('');
   const [hasJoinedGroup, setHasJoinedGroup] = useState(false);
   const [showSupplierMessage, setShowSupplierMessage] = useState(false);
@@ -34,16 +35,17 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-gradient-warm">
-      <LanguageToggle isHindi={isHindi} onToggle={() => setIsHindi(!isHindi)} />
+      <LanguageToggle 
+        currentLanguage={currentLanguage} 
+        onLanguageChange={changeLanguage} 
+      />
       
       {/* Header */}
       <header className="bg-gradient-primary text-primary-foreground py-6 shadow-primary">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-3xl font-bold mb-2">ChaatAI</h1>
+          <h1 className="text-3xl font-bold mb-2">{translations.appTitle}</h1>
           <p className="text-lg opacity-90">
-            {isHindi 
-              ? "दुकानदारों के लिए आसान ग्रुप ख़रीदारी" 
-              : "Easy Group Buying for Street Vendors"}
+            {translations.appSubtitle}
           </p>
         </div>
       </header>
@@ -52,7 +54,7 @@ const Index = () => {
         <div className="space-y-8">
           {/* Voice Input Section */}
           <section className="text-center">
-            <VoiceInput onVoiceInput={handleVoiceInput} isHindi={isHindi} />
+            <VoiceInput onVoiceInput={handleVoiceInput} translations={translations} />
           </section>
 
           {/* Order Card */}
@@ -60,7 +62,7 @@ const Index = () => {
             <section>
               <OrderCard 
                 order={currentOrder} 
-                isHindi={isHindi} 
+                translations={translations}
                 onJoinGroup={handleJoinGroup}
               />
             </section>
@@ -71,13 +73,13 @@ const Index = () => {
             <div className="grid md:grid-cols-2 gap-6">
               {/* Map View */}
               <section>
-                <MapView isHindi={isHindi} />
+                <MapView translations={translations} />
               </section>
 
               {/* Group Order Status */}
               <section>
                 <GroupOrderStatus 
-                  isHindi={isHindi}
+                  translations={translations}
                   currentBuyers={currentBuyers}
                   targetBuyers={targetBuyers}
                   timeLeft="15 min"
@@ -91,7 +93,7 @@ const Index = () => {
           {showSupplierMessage && (
             <section>
               <SupplierMessage 
-                isHindi={isHindi} 
+                translations={translations}
                 onClose={() => setShowSupplierMessage(false)}
               />
             </section>
@@ -99,7 +101,7 @@ const Index = () => {
 
           {/* How It Works */}
           <section>
-            <HowItWorks isHindi={isHindi} />
+            <HowItWorks translations={translations} />
           </section>
         </div>
       </main>
@@ -110,21 +112,21 @@ const Index = () => {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button variant="secondary" size="lg" className="flex items-center gap-2">
               <Phone className="h-5 w-5" />
-              {isHindi ? "सहायता के लिए कॉल करें" : "Call Support"}
+              {translations.callSupport}
             </Button>
             <Button variant="ghost" size="lg" className="flex items-center gap-2">
               <HelpCircle className="h-5 w-5" />
-              {isHindi ? "दुकानदारों के लिए FAQ" : "FAQs for Vendors"}
+              {translations.faqsForVendors}
             </Button>
           </div>
           <div className="text-center mt-6 text-muted-foreground">
-            <p>{isHindi ? "ChaatAI के साथ मिलकर पैसे बचाएं" : "Save money together with ChaatAI"}</p>
+            <p>{translations.saveMoneyTogether}</p>
           </div>
         </div>
       </footer>
 
       {/* AI Assistant */}
-      <AIAssistant isHindi={isHindi} showOrderConfirmation={hasJoinedGroup} />
+      <AIAssistant translations={translations} showOrderConfirmation={hasJoinedGroup} />
     </div>
   );
 };

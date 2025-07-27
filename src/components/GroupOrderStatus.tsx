@@ -4,8 +4,10 @@ import { Progress } from '@/components/ui/progress';
 import { Button } from '@/components/ui/button';
 import { Users, Clock, CheckCircle } from 'lucide-react';
 
+import { Translations } from '@/constants/translations';
+
 interface GroupOrderStatusProps {
-  isHindi: boolean;
+  translations: Translations;
   currentBuyers: number;
   targetBuyers: number;
   timeLeft: string;
@@ -13,7 +15,7 @@ interface GroupOrderStatusProps {
 }
 
 const GroupOrderStatus: React.FC<GroupOrderStatusProps> = ({ 
-  isHindi, 
+  translations,
   currentBuyers, 
   targetBuyers, 
   timeLeft,
@@ -27,7 +29,7 @@ const GroupOrderStatus: React.FC<GroupOrderStatusProps> = ({
       <CardHeader>
         <CardTitle className="flex items-center gap-2 text-primary">
           <Users className="h-6 w-6" />
-          {isHindi ? "ग्रुप ऑर्डर स्थिति" : "Group Order Status"}
+          {translations.groupOrderStatus}
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">

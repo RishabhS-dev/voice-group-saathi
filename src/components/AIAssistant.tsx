@@ -3,27 +3,25 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { MessageCircle, X } from 'lucide-react';
 
+import { Translations } from '@/constants/translations';
+
 interface AIAssistantProps {
-  isHindi: boolean;
+  translations: Translations;
   showOrderConfirmation: boolean;
 }
 
-const AIAssistant: React.FC<AIAssistantProps> = ({ isHindi, showOrderConfirmation }) => {
+const AIAssistant: React.FC<AIAssistantProps> = ({ translations, showOrderConfirmation }) => {
   const [isVisible, setIsVisible] = useState(true);
   const [message, setMessage] = useState('');
 
   useEffect(() => {
     if (showOrderConfirmation) {
-      setMessage(isHindi 
-        ? "आपका ऑर्डर ग्रुप में जोड़ दिया गया है।" 
-        : "Your order has been added to a group.");
+      setMessage(translations.orderAdded);
       setIsVisible(true);
     } else {
-      setMessage(isHindi 
-        ? "नमस्ते! आपका ऑर्डर रिकॉर्ड करने के लिए mic बटन दबाइए।" 
-        : "Namaste! Press mic button to record your order.");
+      setMessage(translations.pressMicButton);
     }
-  }, [isHindi, showOrderConfirmation]);
+  }, [translations, showOrderConfirmation]);
 
   if (!isVisible) return null;
 

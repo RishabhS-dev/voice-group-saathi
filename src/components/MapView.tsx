@@ -3,15 +3,17 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { MapPin, Users, ShoppingBasket } from 'lucide-react';
 import mapImage from '@/assets/map-view.jpg';
 
+import { Translations } from '@/constants/translations';
+
 interface MapViewProps {
-  isHindi: boolean;
+  translations: Translations;
 }
 
-const MapView: React.FC<MapViewProps> = ({ isHindi }) => {
+const MapView: React.FC<MapViewProps> = ({ translations }) => {
   const activeOrders = [
-    { id: 1, item: isHindi ? "टमाटर" : "Tomatoes", buyers: 7, distance: "200m" },
-    { id: 2, item: isHindi ? "प्याज" : "Onions", buyers: 5, distance: "350m" },
-    { id: 3, item: isHindi ? "आलू" : "Potatoes", buyers: 9, distance: "450m" },
+    { id: 1, item: "टमाटर", buyers: 7, distance: "200m" },
+    { id: 2, item: "प्याज", buyers: 5, distance: "350m" },
+    { id: 3, item: "आलू", buyers: 9, distance: "450m" },
   ];
 
   return (
@@ -19,7 +21,7 @@ const MapView: React.FC<MapViewProps> = ({ isHindi }) => {
       <CardHeader>
         <CardTitle className="flex items-center gap-2 text-primary">
           <MapPin className="h-6 w-6" />
-          {isHindi ? "आसपास के ग्रुप ऑर्डर" : "Nearby Group Orders"}
+          {translations.nearbyGroups}
         </CardTitle>
       </CardHeader>
       <CardContent>
@@ -43,7 +45,7 @@ const MapView: React.FC<MapViewProps> = ({ isHindi }) => {
                   <p className="font-medium text-foreground">{order.item}</p>
                   <div className="flex items-center gap-2 text-sm text-muted-foreground">
                     <Users className="h-3 w-3" />
-                    <span>{order.buyers} {isHindi ? "खरीदार" : "buyers"}</span>
+                    <span>{order.buyers} {translations.buyers}</span>
                     <span>•</span>
                     <span>{order.distance}</span>
                   </div>
