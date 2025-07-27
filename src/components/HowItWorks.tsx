@@ -3,13 +3,11 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Mic, Users, MessageSquare, PiggyBank } from 'lucide-react';
 import howItWorksImage from '@/assets/how-it-works.jpg';
 
-import { Translations } from '@/constants/translations';
-
 interface HowItWorksProps {
-  translations: Translations;
+  isHindi: boolean;
 }
 
-const HowItWorks: React.FC<HowItWorksProps> = ({ translations }) => {
+const HowItWorks: React.FC<HowItWorksProps> = ({ isHindi }) => {
   const steps = [
     {
       icon: Mic,
@@ -37,7 +35,7 @@ const HowItWorks: React.FC<HowItWorksProps> = ({ translations }) => {
     <Card className="w-full shadow-warm">
       <CardHeader>
         <CardTitle className="text-center text-primary text-xl">
-          {translations.howItWorks}
+          {isHindi ? "ChaatAI कैसे काम करता है?" : "How ChaatAI Works?"}
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-6">
